@@ -1,36 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-
-const BasketItem = {
-  Container: styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    flex-basis: 50%;
-    justify-content: space-between;
-    padding: 6px;
-    border-bottom: 1px solid #17393a;
-  `,
-  Title: styled.div`
-  text-align: left;
-    flex-basis: 50%;
-    color: #333;
-  `,
-  Price: styled.div`
-    text-align: right;
-    flex-basis: 50%;
-  `,
-  Promo: styled.div`
-    flex-basis: 100%;
-    text-align: right;
-    color: #F00;
-  `,
-};
-
-const Total = styled.div`
-  padding: 6px;
-  font-weight: bold;
-  text-align: right;
-`;
+import React, { useEffect } from 'react';
+import { BasketItem, Total } from './styles';
 
 const Basket = ({ addedProductsToBasket, setActionAddItem }) => {
   let totalValueAdded = addedProductsToBasket 
@@ -66,9 +35,9 @@ const Basket = ({ addedProductsToBasket, setActionAddItem }) => {
         </BasketItem.Container>
       )}
       <Total>
-        <p>Total £ { totalValueAdded.toFixed(2)}</p>
-        <p>Discount £ { totalSavingsValue.toFixed(2) }</p> 
-        <p>Payable £ { (totalValueAdded - totalSavingsValue).toFixed(2) }</p>        
+        <p style={{ color: '#333' }}>Total £ { totalValueAdded.toFixed(2)}</p>
+        <p style={{ color: '#F00' }}>Discount £ { totalSavingsValue.toFixed(2) }</p> 
+        <p style={{ color: '#228B22' }}>Payable £ { (totalValueAdded - totalSavingsValue).toFixed(2) }</p>        
      </Total>
     </>
   );

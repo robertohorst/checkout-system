@@ -88,11 +88,16 @@ export default function Home() {
           ))}
         </Grid.Left>
         <Grid.Right>
-          <Basket 
-            addedProductsToBasket={storedProductsToBasket} 
-            setActionAddItem={setActionAddItem} 
-          />
-          <Button onClick={() => clearBasket()}>CLEAN BASKET</Button>
+          { storedProductsToBasket 
+            ? <>
+                <Basket 
+                  addedProductsToBasket={storedProductsToBasket} 
+                  setActionAddItem={setActionAddItem} 
+                />
+                <Button onClick={() => clearBasket()}>CLEAR BASKET</Button>
+              </>
+            : <h4>Your basket is empty :(</h4>
+          }
         </Grid.Right>
       </Grid.Container>
     </Box>
