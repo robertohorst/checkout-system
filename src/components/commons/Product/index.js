@@ -2,6 +2,7 @@ import React from "react";
 import { ProductWrapper, Image } from "./styles"
 import Link from "next/link";
 import FeatherIcon from "feather-icons-react";
+import fetchProducts from "../../../services/fetchProducts";
 
 // Calculates the discount value per item
 function applyPromotion(item, type) {
@@ -54,8 +55,7 @@ const Product = ({ item, setActionAddItem }) => {
       };
 
       // Check for promotions
-      await fetch(`http://localhost:8081/products/${item.id}`)
-        .then(response => response.json())
+      await fetchProducts.getProduct(item.id)
         .then(result => newItem.promotion = result.promotions[0]);
 
       if(newItem.promotion)
@@ -70,6 +70,7 @@ const Product = ({ item, setActionAddItem }) => {
   return (
     <ProductWrapper.Container
       key={item.id}
+      data-testid="productsList"
     >
       <ProductWrapper.Image>
         <Image src="https://via.placeholder.com/55.png/fff?text=Photo" />

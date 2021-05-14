@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Basket } from "../src/components/commons/Basket";
 import { Product } from "../src/components/commons/Product";
+import fetchProducts from "../src/services/fetchProducts";
 
 const Box = styled.div`
   background-color: #f1faee;
@@ -55,24 +56,24 @@ function clearBasket(){
 }
 
 export default function Home() {
-  const [actionAddedItem, setActionAddItem] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [storedProductsToBasket, setStoredProductsToBasket] = useState();
+  const [actionAddedItem, setActionAddItem] = React.useState(false);
+  const [products, setProducts] = React.useState([]);
+  const [storedProductsToBasket, setStoredProductsToBasket] = React.useState();
 
-  useEffect(() => {
-    fetch('http://localhost:8081/products')
-      .then((response) => response.json())
+  React.useEffect(() => {
+    fetchProducts.getProducts()
       .then((result) => {
-        const orderedResult = result.sort((item1, item2) => item1.name.localeCompare(item2.name));
+        const orderedResult = result.sort((item1, item2) => 
+          item1.name.localeCompare(item2.name));
         setProducts(orderedResult);
       });
   }, []);
 
   // Loads the items stored in localStorage (executed everytime a new item is added)
-  useEffect(() => {
+  React.useEffect(() => {
     const storedData = localStorage.getItem('__basketItems');
     if (storedData) {
-      setStoredProductsToBasket(JSON.parse(storedData).items);
+      setStoredProductsToBasket(JSON.parse(storedData));
     }
   }, [actionAddedItem]);
 

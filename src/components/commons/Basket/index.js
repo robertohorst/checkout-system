@@ -3,21 +3,19 @@ import { BasketItem, Total } from './styles';
 
 const Basket = ({ addedProductsToBasket, setActionAddItem }) => {
   let totalValueAdded = addedProductsToBasket 
-    ? addedProductsToBasket.reduce( (totalBasketValue, item) => 
+    ? addedProductsToBasket.items.reduce( (totalBasketValue, item) => 
         totalBasketValue + (item.quantity * item.price)/100, 0)
     : 0;
   let totalSavingsValue = addedProductsToBasket 
-    ? addedProductsToBasket.reduce( (totalSavings, item) => 
+    ? addedProductsToBasket.items.reduce( (totalSavings, item) => 
         totalSavings + item.savings, 0)
     : 0;
-
-  useEffect(() => {
-      setActionAddItem(false);
-  }, [addedProductsToBasket]);
+  
+  setActionAddItem(false); 
   
   return (
     <>
-      { addedProductsToBasket && addedProductsToBasket.map( item => 
+      { addedProductsToBasket && addedProductsToBasket.items.map( item => 
         <BasketItem.Container
           key = { item.id }
         >
@@ -29,7 +27,7 @@ const Basket = ({ addedProductsToBasket, setActionAddItem }) => {
           </BasketItem.Price>
           { item.savings>0 &&
             <BasketItem.Promo>
-              { `Discount £ ${ item.savings.toFixed(2) }` }
+              { `Promo £ ${ item.savings.toFixed(2) }` }
             </BasketItem.Promo>
           }
         </BasketItem.Container>
