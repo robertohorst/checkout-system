@@ -2,8 +2,8 @@
 
 I choose to make an UI with react using Next.js, because given the challenge, I thought it just made sense to have an interface.
 I integrated the list of products and the basket to one single interface. 
-After adding the diserd items you will be able to see the price, discount and the payable amount.
-If you wan´t to change your products just click on [Clear basket].
+After adding the desired items you will be able to see the price, possible discount and the payable amount.
+If you want to change your products just click on [Clear basket].
 
 To run the app just clone the repository or download your zip
 
