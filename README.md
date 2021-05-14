@@ -2,6 +2,12 @@
 
 To run the app just clone the repository or download your zip
 
-``` yarn dev ```
+To run it
+``` 
+yarn dev 
+```
 
-``` yarn test ```
+To run the tests
+``` 
+yarn test 
+```
