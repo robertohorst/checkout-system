@@ -75,7 +75,7 @@ describe("Test if sum of itens are wrong", () => {
         />
       );
 
-      expect(getByText(/Total £/i).textContent).not.toBe("Total £ 19.98");
+      expect(getByText(/Total £/i).textContent).toBe("Total £ 19.98");
 
       expect(getByText(/Discount £/i).textContent).not.toBe("Discount £ 1.00");
 
