@@ -1,11 +1,12 @@
 #### 1.How long did you spend on the test?
-Answer: Almost 2 days.
+Answer: I didn't have time to work on it full time, so I think I spent about 20h distribuited over 4 days.
   
 #### 2.What would you add if you had more time?
 Answer: 
 - create types for products and basket items.
+- some integration test.
 - option to remove or edit the amount of one item in the basket;
-- show to the user what promotion is available for each item; 
+- show to the user what promotion is available for each item;
 
 #### 3.How would you improve the product APIs that you had to consume?
 Answer: Considering that the API wouldn't assume any rules implemented in the front, I think I would just add the promotion information directly to the '/product' endpoint to avoid multiple requests. Also include image URLs for the products.
